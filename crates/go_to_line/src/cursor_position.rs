@@ -1,10 +1,10 @@
-use editor::{Editor, ToPoint};
+use editor::{Editor, ToPointUtf16};
 use gpui::{AppContext, Subscription, View, WeakView};
 use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use settings::{Settings, SettingsSources};
 use std::fmt::Write;
-use text::{Point, Selection};
+use text::{Point, PointUtf16, Selection};
 use ui::{
     div, Button, ButtonCommon, Clickable, FluentBuilder, IntoElement, LabelSize, ParentElement,
     Render, Tooltip, ViewContext,
@@ -20,7 +20,7 @@ struct SelectionStats {
 }
 
 pub struct CursorPosition {
-    position: Option<Point>,
+    position: Option<PointUtf16>,
     selected_count: SelectionStats,
     workspace: WeakView<Workspace>,
     _observe_active_editor: Option<Subscription>,
@@ -60,7 +60,7 @@ impl CursorPosition {
                 }
             }
         }
-        self.position = last_selection.map(|s| s.head().to_point(&buffer));
+        self.position = last_selection.map(|s| s.head().to_point_utf16(&buffer));
 
         cx.notify();
     }

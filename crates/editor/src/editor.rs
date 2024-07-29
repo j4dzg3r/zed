@@ -107,7 +107,7 @@ use mouse_context_menu::MouseContextMenu;
 use movement::TextLayoutDetails;
 pub use multi_buffer::{
     Anchor, AnchorRangeExt, ExcerptId, ExcerptRange, MultiBuffer, MultiBufferSnapshot, ToOffset,
-    ToPoint,
+    ToPoint, ToPointUtf16,
 };
 use multi_buffer::{ExpandExcerptDirection, MultiBufferPoint, MultiBufferRow, ToOffsetUtf16};
 use ordered_float::OrderedFloat;
